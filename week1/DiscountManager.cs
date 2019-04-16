@@ -8,6 +8,13 @@ namespace week1
 {
     class DiscountManager
     {
+        private readonly IAccountDiscountCaculatorFactory _factory;
+        private readonly ILoyaltyDiscountCalculator _loyaltyDiscountCalculator;
+        public DiscountManager(IAccountDiscountCaculatorFactory factory, ILoyaltyDiscountCalculator loyaltyDiscountCalculator)
+        {
+            _factory = factory;
+            _loyaltyDiscountCalculator = loyaltyDiscountCalculator;
+        }
         public decimal ApplyDiscount(decimal price, AccountStatus accountStatus, int timeOfHavingAccountInYears)
         {
             decimal priceAfterDiscount = 0;
@@ -23,25 +30,25 @@ namespace week1
                 case AccountStatus.SimpleCustomer:
                     {
                         priceAfterDiscount = price.ApplyDiscountForAccountStatus(Constants.DISCOUNT_FOR_SIMPLE_CUSTOMERS)
-                            .ApplyDiscountForTimeOfHavingAccount(timeOfHavingAccountInYears);
+                            ;
                            break;
                     }
                 case AccountStatus.ValuableCustomer:
                     {
-                        priceAfterDiscount = (price - (Constants.DISCOUNT_FOR_VALUABLE_CUSTOMERS * price));
-                        priceAfterDiscount = priceAfterDiscount - (discountForLoyaltyInPercentage * priceAfterDiscount);
-                        break;
+                        priceAfterDiscount = price.ApplyDiscountForAccountStatus(Constants.DISCOUNT_FOR_VALUABLE_CUSTOMERS)
+                           ;
+                           break;
                     }
                 case AccountStatus.MostValuableCustomer:
                     {
-                        priceAfterDiscount = (price - (Constants.DISCOUNT_FOR_MOST_VALUABLE_CUSTOMERS * price));
-                        priceAfterDiscount = priceAfterDiscount - (discountForLoyaltyInPercentage * priceAfterDiscount);
+                        priceAfterDiscount = price.ApplyDiscountForAccountStatus(Constants.DISCOUNT_FOR_MOST_VALUABLE_CUSTOMERS)
+                         ;
                         break;
                     }
                 default:
                     throw new NotImplementedException();
             }
-
+            priceAfterDiscount = priceAfterDiscount.ApplyDiscountForTimeOfHavingAccount(timeOfHavingAccountInYears);
             return priceAfterDiscount;
 
         }
@@ -73,5 +80,6 @@ namespace week1
         IAccountDiscountCaculatorFactory GetAccountDiscountCaculator(AccountStatus accountStatus);
     }
 }
+// page 11
 
     

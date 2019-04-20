@@ -3,13 +3,17 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
+
 
 namespace week1
 {
+    
     class DiscountManager
-    {
+    {  
         private readonly IAccountDiscountCaculatorFactory _factory;
         private readonly ILoyaltyDiscountCalculator _loyaltyDiscountCalculator;
+        
         public DiscountManager(IAccountDiscountCaculatorFactory factory, ILoyaltyDiscountCalculator loyaltyDiscountCalculator)
         {
             _factory = factory;
@@ -77,7 +81,7 @@ namespace week1
     }
     public interface IAccountDiscountCaculatorFactory
     {
-        IAccountDiscountCaculatorFactory GetAccountDiscountCaculator(AccountStatus accountStatus);
+        IAccountDiscountCaculator GetAccountDiscountCaculator(AccountStatus accountStatus);
     }
     public interface ILoyaltyDiscountCalculator
     {
@@ -119,6 +123,11 @@ namespace week1
             return (IAccountDiscountCaculatorFactory)caculator;
          
         }
+
+        IAccountDiscountCaculator IAccountDiscountCaculatorFactory.GetAccountDiscountCaculator(AccountStatus accountStatus)
+        {
+            throw new NotImplementedException();
+        }
     }
     public interface IAccountDiscountCaculator
     {
@@ -132,7 +141,7 @@ namespace week1
         }
     }
     public class SimpleCustomerDiscountCaculator : IAccountDiscountCaculator
-    {
+    {   
         public decimal ApplyDiscount(decimal price)
         {
             return price - (Constants.DISCOUNT_FOR_SIMPLE_CUSTOMERS * price);

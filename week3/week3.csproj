@@ -43,7 +43,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DatabaseManager.cs" />
+    <Compile Include="EmailData.cs" />
     <Compile Include="EmailManager.cs" />
+    <Compile Include="EmailMessage.cs" />
+    <Compile Include="EmailMessageCreater.cs" />
+    <Compile Include="EmailSender.cs" />
+    <Compile Include="IDatabaseManager.cs" />
+    <Compile Include="IEmailMessageCreator.cs" />
+    <Compile Include="IEmailSender.cs" />
+    <Compile Include="ILogger.cs" />
+    <Compile Include="Logger.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

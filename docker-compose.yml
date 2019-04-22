@@ -1,8 +1,0 @@
-version: '3.4'
-
-services:
-  week4:
-    image: ${DOCKER_REGISTRY-}week4
-    build:
-      context: .\week4
-      dockerfile: Dockerfile

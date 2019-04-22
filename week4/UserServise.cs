@@ -18,7 +18,7 @@ namespace week4
             _logger = logger;
         }
 
-        public bool RegisterUser(String login, string password)
+        public bool RegisterUser(String login, string password, string emailAddress)
         {
             try
             {
@@ -31,6 +31,6 @@ namespace week4
             }
             return true;
         }
-    }
+     }
     
 }

@@ -11,7 +11,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "week3", "week3\week3.csproj
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "week4", "week4\week4.csproj", "{E9DC745B-9A47-4C98-A497-38BE7418045A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "week5", "..\week5\week5.csproj", "{E61FB9F4-5E96-4780-A7B0-CD94D5DB13FE}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "week5_v1", "..\week5\week5_v1.csproj", "{E61FB9F4-5E96-4780-A7B0-CD94D5DB13FE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
